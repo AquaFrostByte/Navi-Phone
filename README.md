@@ -26,7 +26,8 @@ CYD Display
 🖥️ Programming Details
 
 The entire program is written in MicroPython, using the Thonny IDE. 🐍✨ While I haven’t had time to write full documentation, I’ve shared my notes here:
-📓 CYD MicroPython Basics (Notion)
+📓 CYD MicroPython Basics ( https://absorbed-roast-fbd.notion.site/CYD-MicroPY-Basics-17f437bb1ad9803bb6d4e7317a18f463?pvs=4 )
+
 
 ⚠️ Note:
 The latest version of the script is always on GitHub. The versions in my notes may be broken betas or simplified examples. Proceed with caution! 🚧
