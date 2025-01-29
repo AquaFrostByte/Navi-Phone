@@ -34,4 +34,7 @@ The latest version of the script is always on GitHub. The versions in my notes m
 
 Let me know what you think! Feedback is always appreciated. 🌌
 
+# V3 Update
+- Added Emails from the anime!
+
 Lets all love lain...
