@@ -11,7 +11,7 @@ This is Version 2 of my Pocket Navi project. The original was built with MicroPy
 The base device is a CYD ESP32 board, which comes with a display and SD card slot. I highly recommend using the same model, available here:
 👉 [Buy on AliExpress](https://www.aliexpress.com/item/1005004502250619.html) *(Note: get the one **without** USB-C!)*
 
-I’ve also included the custom libraries I used — place them in the `libraries` folder of your Arduino setup. I recommend using these versions because I had issues with the default ones.
+I’ve also included the custom libraries I used! Not included in git its [HERE](https://archive.org/details/tft-e-spi/Librarys/XPT2046_Touchscreen/doc/ILI9431Test.jpg) — place them in the `libraries` folder of your Arduino setup. I recommend using these versions because I had issues with the default ones.
 
 Hope you enjoy this! <3
 
