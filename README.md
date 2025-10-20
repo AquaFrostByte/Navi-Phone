@@ -1,5 +1,3 @@
----
-
 # ESP32 Navi
 
 *A recreation of the Pocket Navi from [Serial Experiments Lain](https://archive.org/details/serial-experiments-lain-english)*
