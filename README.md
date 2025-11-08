@@ -2,50 +2,44 @@
 
 *A recreation of the Pocket Navi from [Serial Experiments Lain](https://archive.org/details/serial-experiments-lain-english)*
 
----
+## overview
 
-## ✨ Overview
+This is the second version of my Pocket Navi project. I built the original with MicroPython, but its limitations pushed me to rebuild everything from scratch in C/C++. It took a while.
 
-This is Version 2 of my Pocket Navi project. The original was built with MicroPython, but due to its limitations, I’ve rebuilt everything from scratch in C/C++ — which took quite a bit of time!
+The device is built on a CYD ESP32 board, which conveniently includes a display and an SD card slot. I strongly recommend using the same model to avoid potential headaches. You can get it on AliExpress:
 
-The base device is a CYD ESP32 board, which comes with a display and SD card slot. I highly recommend using the same model, available here:
-👉 [Buy on AliExpress](https://www.aliexpress.com/item/1005004502250619.html) *(Note: get the one **without** USB-C!)*
+[Buy on AliExpress](https://www.aliexpress.com/item/1005004502250619.html)
+*(Important: Get the version **without** the USB-C port.)*
 
-I’ve also included the custom libraries I used! Not included in git its [HERE](https://archive.org/details/tft-e-spi/Librarys/XPT2046_Touchscreen/doc/ILI9431Test.jpg) — place them in the `libraries` folder of your Arduino setup. I recommend using these versions because I had issues with the default ones.
+The custom libraries I used are not included in this repository, but you can download them [here](https://archive.org/details/tft-e-spi/Librarys/XPT2046_Touchscreen/doc/ILI9431Test.jpg). Just drop them into the `libraries` folder of your Arduino installation. I suggest using these specific versions, as I ran into problems with the standard ones.
 
-Hope you enjoy this! <3
+Hope you enjoy it.
 
----
+## features
 
-## 🛠 Features
+### carried over from v1
 
-### Carried Over from v1
+*   Image display
+*   Logout screen
+*   Displays a few email messages from the anime
 
-* Image display
-* Logout screen
-* Displays a few email messages from the anime
+### new in v2
 
-### New in v2
+*   Display now turns off in logout mode to save power
+*   Sound playback support (WAV format)
+*   Much faster performance, thanks to the C++ rewrite
+*   Uses standard `.jpg` images instead of raw RGB565 files
+*   A basic, integrated "Messenger" system
 
-* Display turns off in logout mode to save power
-* Sound playback support (WAV format)
-* Much faster performance thanks to C++
-* Now uses `.jpg` images instead of raw RGB565
-* Integrated "Messenger" system (very basic)
+## how to use / customize the navi
 
----
+I'll be honest, I'm a little burned out on this project, so some parts are rough around the edges. If you're comfortable with Git and Arduino, you should be able to figure it out.
 
-## ⚙️ How to Use / Customize the Navi
+### images
 
-I’ll be honest — I’m kind of burned out on this project, so it's a little rough around the edges. But if you're comfortable with Git and Arduino, you should be able to work it out!
+The images that cycle on the home screen are loaded from the SD card. They must be `.jpg` files.
 
----
-
-### 🖼️ Images
-
-The images that cycle when you press the image button are saved on the SD card as `.jpg` files.
-
-You’ll need to manually add your filenames to this array in the code:
+You'll need to add your filenames to this array in the code:
 
 ```cpp
 String Images[] = {
@@ -56,15 +50,13 @@ String Images[] = {
 };
 ```
 
----
+### sound
 
-### 🔊 Sound
+This part is a bit trickier. Sounds must be in `.wav` format and encoded correctly. I used [Audacity](https://www.audacityteam.org/) to prepare the audio files.
 
-This part’s a bit trickier. Sounds must be in `.wav` format and properly encoded. I recommend using [Audacity](https://www.audacityteam.org/) to prepare your audio files.
+<img width="551" height="507" alt="Audacity export settings for WAV" src="https://github.com/user-attachments/assets/221698ce-00d9-458a-b263-d0caeda791ce" />
 
-<img width="551" height="507" alt="image" src="https://github.com/user-attachments/assets/221698ce-00d9-458a-b263-d0caeda791ce" />
-
-Each sound button corresponds to a function like this:
+Each sound button calls a function in the code. To change a sound, find its corresponding function:
 
 ```cpp
 void Sound1() {
@@ -72,22 +64,22 @@ void Sound1() {
 }
 ```
 
-Just replace `"musicbox.wav"` with your file's name. Files are loaded from the SD card root (`/`).
+Just replace `"musicbox.wav"` with the name of your file. All sound files should be in the root directory of the SD card.
 
-**Note:** The button label won't change, as it's baked into the background image. You can change that by updating the corresponding image (e.g., `Sounds.jpg` in `fileNames[]`).
+**Note:** The button labels on the screen are part of the background image (`Sounds.jpg`), so they won't update automatically. You'll have to edit the image itself if you want the text to match your new sound.
 
 ---
 
-### 💬 Messenger Setup
+### messenger setup
 
-The messenger feature is just a fun concept right now.
+The messenger is more of a proof-of-concept right now.
 
-It works, but it’s **not secure** — messages are sent in **plain HTTP**, and anyone could potentially read them by guessing usernames. I'm working on updating the server and may release a desktop client too.
+A word of warning: **it is not secure**. Messages are sent over plain HTTP without any encryption. Anyone on the network could potentially read them. I'm working on an update for the server and might release a desktop client later.
 
-If you still want to try it (it’s pretty cool), here's how:
+If you still want to try it out, here's how:
 
-1. Make sure the `"WIFI"` flag is enabled (default: ON).
-2. Set your Wi-Fi credentials and server address:
+1.  Make sure the `WIFI` flag is enabled in the code (it is by default).
+2.  Set your Wi-Fi credentials and server address:
 
 ```cpp
 const char* SERVER_URL = "http://YOUR.SERVER.IP/messages"; 
@@ -101,52 +93,37 @@ IPAddress subnet(255, 255, 255, 0);
 IPAddress dns(8, 8, 8, 8);
 ```
 
-3. On your ESP, just open Messenger and click Send or Receive.
+3.  On the ESP32, open the Messenger and use the Send or Receive buttons.
 
-> 💡 To type, just tap anywhere outside the on-screen keyboard!
+> **Note:** To type, tap anywhere on the screen outside of the on-screen keyboard area.
 
----
+## stl / 3d files
 
-## 🧱 STL / 3D Files
+I've removed the STL files for now. Frankly, they weren't very good. I'll re-upload them once I've designed a version I'm happy with.
 
-I’ve removed the STL files for now — they weren’t very good. I’ll re-upload improved versions once I’m happy with them.
+## server & client
 
----
+### server
 
-## 🖥️ Server & Client
+The server for the messenger is a simple Flask application.
 
-### 🌐 Server
-
-The Messenger server is a simple Flask HTTP server.
-
-Before running `app.py`, initialize the SQLite database:
-
+Before running `app.py`, you need to initialize the SQLite database:
 ```bash
 python init_db.py
 ```
 
-Then run:
-
+Then, start the server:
 ```bash
 python app.py
 ```
+That's it.
 
-That’s it!
+### client
 
----
+Coming soon. I plan to release a simple CLI tool for testing first, and then work on a proper desktop app when I find the time. :3
 
-### 🧪 Client
+## final words
 
-Coming soon! I’ll release a basic CLI tool for testing and then build a full desktop app when I can. :3
-
----
-
-## ❤️ Final Words
-
-This project took a lot of time and energy, and I really hope you enjoy it. Whether you're using it as decoration, a conversation piece, or just for fun — have a great time with it.
+This project took a lot of my time and energy. I really hope you have fun with it, whether you use it as a decoration, a conversation piece, or something else entirely.
 
 Let’s all love Lain. <3
-
----
-
-Let me know if you'd like a Markdown version you can copy-paste directly into your GitHub README.md file, or if you want help generating screenshots, diagrams, or 3D renders.
