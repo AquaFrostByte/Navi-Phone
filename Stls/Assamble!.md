@@ -14,8 +14,7 @@
   
 ---
 Everything :
-  ![IMG_6571](https://github.com/user-attachments/assets/e8dc6caf-a428-4315-b682-bcd3f59c0fc0)
-
+  ![IMG_6570](https://github.com/user-attachments/assets/cc2e10a6-db11-462a-ae70-41f3536c496f)
 
 **Step 1:**
 Insert the M3×8 mm screws through the backplate and screw on the plastic spacers.
