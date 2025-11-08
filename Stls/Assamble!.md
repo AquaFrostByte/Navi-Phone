@@ -10,10 +10,12 @@
 * Foam tape
 * Electrical tape
 
-Everything :
-  ![IMG_6571](https://github.com/user-attachments/assets/e8dc6caf-a428-4315-b682-bcd3f59c0fc0)
+
   
 ---
+Everything :
+  ![IMG_6571](https://github.com/user-attachments/assets/e8dc6caf-a428-4315-b682-bcd3f59c0fc0)
+
 
 **Step 1:**
 Insert the M3×8 mm screws through the backplate and screw on the plastic spacers.
