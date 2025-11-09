@@ -30,3 +30,10 @@ Finally, mount the display using the M3×6 mm screws.
 ![IMG_6571](https://github.com/user-attachments/assets/ff382044-8ab0-4ca7-b9ff-c39a8335c817)
 
 ---
+
+You can add a battry:
+You will need a Battry (mine is 1200mAh with 3.7V) and a TP4056.
+Solder the battry to the TP4056.
+On the + output of the TP4056 solder a switch to turn the navi on and off.
+Lastly solder the + from the switch to the V5/vcc of the Cyds Usb port (yes it works with only 3.7v)
+and ofc - to gnd or the Usb port itself which i found better!
